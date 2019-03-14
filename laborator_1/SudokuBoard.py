@@ -1,3 +1,5 @@
+from math import sqrt
+
 
 class SudokuBoard:
 
@@ -25,7 +27,7 @@ class SudokuBoard:
     def next_empty_cell(self):
         for row in range(0, self._n):
             for col in range(0, self._n):
-                if self._board[row][col] != 0:
+                if self._board[row][col] == 0:
                     return row, col
         return -1, -1
 
@@ -39,12 +41,19 @@ class SudokuBoard:
         return False
 
     def is_present_box(self, row, col, value):
-        pass
+        sqrt_n = int(sqrt(self._n))
+        box_row = row - row % sqrt_n
+        box_col = col - col % sqrt_n
+        for i in range(box_row, box_row + sqrt_n):
+            for j in range(box_col, box_col + sqrt_n):
+                if self._board[i][j] == value:
+                    return True
+        return False
 
     def is_allowed(self, row, col, value):
         if self.is_present_row(row, value) is True and self.is_present_column(col, value) is True and self.is_present_box(row, col, value) is True:
-            return True
-        return False
+            return False
+        return True
 
     def __eq__(self, other):
         if self.get_size() != other.get_size():
@@ -56,9 +65,11 @@ class SudokuBoard:
         return True
 
     def __str__(self):
-        pass
+        result = ""
+        for row in range(0, self._n):
+            for col in range(0, self._n):
+                result = result + str(self._board[row][col]) + " "
+            result = result + "\n"
+        return result
 
-
-b = SudokuBoard("board1.txt")
-print(b.is_present_row(3, 2))
 
