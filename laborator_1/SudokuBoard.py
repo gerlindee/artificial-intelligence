@@ -51,7 +51,11 @@ class SudokuBoard:
         return False
 
     def is_allowed(self, row, col, value):
-        if self.is_present_row(row, value) is True and self.is_present_column(col, value) is True and self.is_present_box(row, col, value) is True:
+        if self.is_present_row(row, value) is True:
+            return False
+        if self.is_present_column(col, value) is True:
+            return False
+        if self.is_present_box(row, col, value) is True:
             return False
         return True
 
@@ -60,7 +64,7 @@ class SudokuBoard:
             return False
         for row in range(0, self._n):
             for col in range(0, self._n):
-                if self._board[row][col] != other.get_board[row][col]:
+                if self._board[row][col] != other.get_board()[row][col]:
                     return False
         return True
 
@@ -71,5 +75,4 @@ class SudokuBoard:
                 result = result + str(self._board[row][col]) + " "
             result = result + "\n"
         return result
-
 
