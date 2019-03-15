@@ -16,6 +16,8 @@ class UI:
         print("3. solve using an informed search method (gbfs);")
 
     def run(self):
+        global board1
+        global board2
         running = True
         selected_board = SudokuBoard("board1.txt")
         while running:
@@ -24,13 +26,43 @@ class UI:
             if command == "0":
                 running = False
             elif command == "1":
-                board1 = SudokuBoard("board1.txt")
-                print("board 1: ")
-                print(board1)
-                # TODO: add more boards
-                selection = input("select a board: ")
-                if selection == "1" or selection == "board 1":
-                    selected_board = board1
+                msg_size = "\t" + "- 4x4;" + "\n"
+                msg_size = msg_size + "\t" + "- 9x9;" + "\n"
+                size = input("board size: " + "\n" + msg_size)
+
+                msg_diff = "\t" + "- very easy;" + "\n"
+                msg_diff = msg_diff + "\t" + "- easy;" + "\n"
+                msg_diff = msg_diff + "\t" + "- medium;" + "\n"
+                msg_diff = msg_diff + "\t" + "- hard;" + "\n"
+                difficulty = input("difficulty: " + "\n" + msg_diff)
+
+                if size == "4" or size == "4x4":
+                    if difficulty == "very easy":
+                        selected_board = SudokuBoard("board6.txt")
+                    elif difficulty == "easy":
+                        selected_board = SudokuBoard("board1.txt")
+                    elif difficulty == "medium":
+                        selected_board = SudokuBoard("board7.txt")
+                    elif difficulty == "hard":
+                        selected_board = SudokuBoard("board8.txt")
+                    else:
+                        print("Invalid input!")
+                elif size == "9" or size == "9x9":
+                    if difficulty == "very easy":
+                        selected_board = SudokuBoard("board2.txt")
+                    elif difficulty == "easy":
+                        selected_board = SudokuBoard("board3.txt")
+                    elif difficulty == "medium":
+                        selected_board = SudokuBoard("board4.txt")
+                    elif difficulty == "hard":
+                        selected_board = SudokuBoard("board5.txt")
+                    else:
+                        print("Invalid input!")
+                else:
+                    print("Invalid input!")
+
+                print("You have selected: ")
+                print(selected_board)
             elif command == "2":
                 prbl = Problem(selected_board)
                 self._controller.set_problem(prbl)
