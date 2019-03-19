@@ -16,17 +16,16 @@ class UI:
         print("3. solve using an informed search method (gbfs);")
 
     def run(self):
-        global board1
-        global board2
         running = True
-        selected_board = SudokuBoard("board1.txt")
+        selected_board = SudokuBoard("board88.txt")
         while running:
             self.mainMenu()
             command = input(">> ")
             if command == "0":
                 running = False
             elif command == "1":
-                msg_size = "\t" + "- 4x4;" + "\n"
+                msg_size = "\t" + "- 3x3" + "\n"
+                msg_size = msg_size + "\t" + "- 4x4;" + "\n"
                 msg_size = msg_size + "\t" + "- 9x9;" + "\n"
                 size = input("board size: " + "\n" + msg_size)
 
@@ -36,26 +35,33 @@ class UI:
                 msg_diff = msg_diff + "\t" + "- hard;" + "\n"
                 difficulty = input("difficulty: " + "\n" + msg_diff)
 
-                if size == "4" or size == "4x4":
-                    if difficulty == "very easy":
-                        selected_board = SudokuBoard("board6.txt")
-                    elif difficulty == "easy":
-                        selected_board = SudokuBoard("board1.txt")
+                if size == "3" or size == "3x3":
+                    if difficulty == "easy" or difficulty == "very easy":
+                        selected_board = SudokuBoard("data/board-3x3-1.txt")
                     elif difficulty == "medium":
-                        selected_board = SudokuBoard("board7.txt")
+                        selected_board = SudokuBoard("data/board-3x3-2.txt")
                     elif difficulty == "hard":
-                        selected_board = SudokuBoard("board8.txt")
+                        selected_board = SudokuBoard("data/board-3x3-3.txt")
+                elif size == "4" or size == "4x4":
+                    if difficulty == "very easy":
+                        selected_board = SudokuBoard("data/board-4x4-1.txt")
+                    elif difficulty == "easy":
+                        selected_board = SudokuBoard("data/board-4x4-2.txt")
+                    elif difficulty == "medium":
+                        selected_board = SudokuBoard("data/board-4x4-3.txt")
+                    elif difficulty == "hard":
+                        selected_board = SudokuBoard("data/board-4x4-4.txt")
                     else:
                         print("Invalid input!")
                 elif size == "9" or size == "9x9":
                     if difficulty == "very easy":
-                        selected_board = SudokuBoard("board2.txt")
+                        selected_board = SudokuBoard("data/board-9x9-1.txt")
                     elif difficulty == "easy":
-                        selected_board = SudokuBoard("board3.txt")
+                        selected_board = SudokuBoard("data/board-9x9-2.txt")
                     elif difficulty == "medium":
-                        selected_board = SudokuBoard("board4.txt")
+                        selected_board = SudokuBoard("data/board-9x9-3.txt")
                     elif difficulty == "hard":
-                        selected_board = SudokuBoard("board5.txt")
+                        selected_board = SudokuBoard("data/board-9x9-4.txt")
                     else:
                         print("Invalid input!")
                 else:

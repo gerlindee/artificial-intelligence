@@ -18,6 +18,12 @@ class SudokuBoard:
             board.append(line)
         return board
 
+    def get_sum(self):
+        sum = 0
+        for num in range(1, self._n + 1):
+            sum = sum + num
+        return sum
+
     def get_board(self):
         return self._board
 
@@ -49,6 +55,8 @@ class SudokuBoard:
                 if self._board[i][j] == value:
                     return True
         return False
+
+
 
     def is_allowed(self, row, col, value):
         if self.is_present_row(row, value) is True:
