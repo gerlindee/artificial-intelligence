@@ -55,6 +55,14 @@ class SudokuBoard:
                     return row, col
         return -1, -1
 
+    def all_empty_cells(self):
+        coordinates = []
+        for row in range(0, self._n):
+            for col in range(0, self._n):
+                if self._board[row][col] == 0:
+                    coordinates.append((row, col))
+        return coordinates
+
     def is_present_row(self, row, val):
         return val in self._board[row]
 

@@ -15,6 +15,7 @@ class UI:
         print("\t" + "2.5. display the step-by-step solution;")
         print("3. solve using an informed search method (gbfs);")
         print("\t" + "3.5. display the step-by-step solution;")
+        print("4. solve using the brutest of methods;")
 
     def run(self):
         running = True
@@ -88,7 +89,13 @@ class UI:
                     for step in result:
                         print(step)
             elif command == "3":
-                pass
+                prbl = Problem(selected_board)
+                self._controller.set_problem(prbl)
+                result = self._controller.gbfs()
+                if result is None:
+                    print("There is no solution for this Sudoku game!")
+                else:
+                    print(result)
             else:
                 print("Invalid command!")
 
