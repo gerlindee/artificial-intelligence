@@ -23,7 +23,6 @@ class Controller:
                 steps = steps[:-1]
         return None
 
-    # TODO: implement gbfs for informed search
     def gbfs(self):
         pass
 

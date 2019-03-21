@@ -14,10 +14,11 @@ class UI:
         print("2. solve using an uninformed search method (bfs);")
         print("\t" + "2.5. display the step-by-step solution;")
         print("3. solve using an informed search method (gbfs);")
+        print("\t" + "3.5. display the step-by-step solution;")
 
     def run(self):
         running = True
-        selected_board = SudokuBoard("board88.txt")
+        selected_board = SudokuBoard("data/board-3x3-1.txt")
         while running:
             self.mainMenu()
             command = input(">> ")

@@ -20,9 +20,27 @@ class SudokuBoard:
 
     def get_sum(self):
         sum = 0
-        for num in range(1, self._n + 1):
-            sum = sum + num
+        for i in range(1, self._n + 1):
+            sum = sum + i
         return sum
+
+    def get_rows(self):
+        list_rows = []
+        for row in range(0, self._n):
+            current_row = []
+            for col in range(0, self._n):
+                current_row.append(self._board[row][col])
+            list_rows.append(current_row)
+        return list_rows
+
+    def get_cols(self):
+        list_cols = []
+        for col in range(0, self._n):
+            current_col = []
+            for row in range(0, self._n):
+                current_col.append(self._board[row][col])
+            list_cols.append(current_col)
+        return list_cols
 
     def get_board(self):
         return self._board
@@ -55,8 +73,6 @@ class SudokuBoard:
                 if self._board[i][j] == value:
                     return True
         return False
-
-
 
     def is_allowed(self, row, col, value):
         if self.is_present_row(row, value) is True:
