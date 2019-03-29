@@ -8,12 +8,6 @@ class Controller:
     def set_problem(self, problem):
         self._problem = problem
 
-    def bfs_no_checks(self):
-        visited = [self._problem.sudoku_board]
-        queue = [[self._problem.sudoku_board()]]
-        while len(queue) > 0:
-            pass
-
     def bfs(self):
         visited = [self._problem.sudoku_board()]
         queue = [[self._problem.sudoku_board()]]
