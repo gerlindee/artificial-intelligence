@@ -4,6 +4,8 @@ import random
 
 CONST_COLORS = ['red', 'green', 'yellow', 'pink', 'purple', 'blue']
 
+# reprezentare mai calumea: permutări de n elemente
+
 
 class Individual:
     def __init__(self, cubes):
@@ -27,6 +29,7 @@ class Individual:
 
     def fitness(self):
         # represents the value of the stability coefficient
+        # the lower the stability coefficient => the better
         stability_coefficient = 0
         height = 0
         for idx in range(0, self._size):
