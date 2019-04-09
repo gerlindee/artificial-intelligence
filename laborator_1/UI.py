@@ -15,7 +15,6 @@ class UI:
         print("\t" + "2.5. display the step-by-step solution;")
         print("3. solve using an informed search method (gbfs);")
         print("\t" + "3.5. display the step-by-step solution;")
-        print("4. solve using the brutest of methods;")
 
     def run(self):
         running = True

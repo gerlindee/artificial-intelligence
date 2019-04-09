@@ -107,4 +107,3 @@ class SudokuBoard:
                 result = result + str(self._board[row][col]) + " "
             result = result + "\n"
         return result
-

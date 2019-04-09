@@ -1,5 +1,6 @@
 from copy import deepcopy
 
+
 class Problem:
     def __init__(self, board):
         self._state = board
@@ -38,10 +39,6 @@ class Problem:
             if sum_row != board.get_sum():
                 return False
         return True
-
-    @staticmethod
-    def heuristic_sort():
-        pass
 
     @staticmethod
     def is_solution_cols(board):

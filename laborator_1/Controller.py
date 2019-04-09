@@ -1,5 +1,3 @@
-import time
-
 
 class Controller:
     def __init__(self):
@@ -41,6 +39,3 @@ class Controller:
                     if board not in visited:
                         queue.append(board)
         return None
-
-
-
