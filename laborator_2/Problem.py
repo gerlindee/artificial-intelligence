@@ -7,7 +7,7 @@ class Problem:
         self._fileName = fileName
 
     def loadData(self):
-        population = Population([])
+        population = Population([], 4)
         f = open(self._fileName, "r")
         for line in f:
             current_pyramid_line = []
@@ -15,7 +15,7 @@ class Problem:
                 cube = cube.strip()
                 items = cube.split(" ")
                 current_pyramid_line.append([int(items[0]), items[1]])
-            pyramid = Individual(current_pyramid_line)
+            pyramid = Individual(current_pyramid_line, 4)
             population.add_individual(pyramid)
         f.close()
         return population
