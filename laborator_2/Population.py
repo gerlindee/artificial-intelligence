@@ -18,7 +18,7 @@ class Population:
         # aka just moves cubes around randomly until the population gets the desired number of individuals
         no_individuals = 0
         individual = Individual.generateIndividual(individual_size)
-        population = [individual]
+        population = Population([individual], population_size)
         while no_individuals < (population_size - 1):
             # we now change the initial configuration in order to get new individuals
             new_individual = deepcopy(individual)
@@ -29,17 +29,18 @@ class Population:
             aux_cube = new_individual.get_cubes()[position_1]
             new_individual.get_cubes()[position_1] = new_individual.get_cubes()[position_2]
             new_individual.get_cubes()[position_2] = aux_cube
-            population.append(new_individual)
+            population.getIndividuals().append(new_individual)
             no_individuals = no_individuals + 1
         return population
 
     def evaluate(self):
         # sort the individuals based on the fitness function
-        return sorted(self._individuals, key=lambda x: x.fitness())
+        return sorted(self._individuals, key=lambda x: x.fitness(), reverse=True)
 
     def selection(self):
         # survival selection, the least qualitative individual is eliminated
-        return self.evaluate()[:-1]
+        self._individuals = self.evaluate()[:-1]
+        return self
 
     def add_individual(self, candidate):
         self._individuals.append(candidate)

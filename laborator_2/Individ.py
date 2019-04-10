@@ -71,8 +71,8 @@ class Individual:
         offspring = Individual([], self._size)
         for _ in range(0, self._size):
             offspring.get_cubes().append(0)
-        start_parent_1 = random.randint(0, self._size - 1)
-        end_parent_1 = random.randint(start_parent_1, self._size - 1)
+        start_parent_1 = random.randint(0, self._size - 2)
+        end_parent_1 = start_parent_1
         while start_parent_1 == end_parent_1:
             end_parent_1 = random.randint(start_parent_1, self._size - 1)
         idx = start_parent_1
@@ -80,7 +80,7 @@ class Individual:
             offspring.get_cubes()[idx] = self.get_cubes()[idx]
             idx = idx + 1
         offspring_idx = idx
-        while idx != start_parent_1:
+        while offspring.has_empty_positions():
             if idx == self._size:
                 idx = 0
                 offspring_idx = 0
@@ -89,6 +89,12 @@ class Individual:
                 offspring_idx = offspring_idx + 1
             idx = idx + 1
         return offspring
+
+    def has_empty_positions(self):
+        for idx in self.get_cubes():
+            if idx == 0:
+                return True
+        return False
 
     def crossover_2(self, other_parent):
         # this is the version with two offsprings
