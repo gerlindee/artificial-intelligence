@@ -6,20 +6,11 @@ import statistics
 
 
 def main():
-    chosenSize = int(input("maximum number of cubes: "))
-    problem = Problem(chosenSize)
+    problem = Problem(10)
 
     pheromoneMatrix = [[1 for i in range(problem.getSize())] for j in range(problem.getSize())]
-    cubeMatrix = [[0 for i in range(problem.getSize())] for j in range(problem.getSize())]
-    for cube in problem.getCubes():
-        i = randint(0, problem.getSize() - 1)
-        j = randint(0, problem.getSize() - 1)
-        while cubeMatrix[i][j] != 0:
-            i = randint(0, problem.getSize() - 1)
-            j = randint(0, problem.getSize() - 1)
-        cubeMatrix[i][j] = cube
 
-    controller = Controller(problem, cubeMatrix)
+    controller = Controller(problem)
 
     fitness = []
     bestAnt = None
@@ -37,6 +28,7 @@ def main():
     print("the standard deviation of the fitness is: ", stddev)
     pyramid = ""
     for cube in bestAnt.getPath():
+        print(cube)
         for c in problem.getCubes():
             if c[0] == cube:
                 pyramid = pyramid + str(c)

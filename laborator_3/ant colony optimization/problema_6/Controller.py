@@ -2,7 +2,7 @@ from Ant import Ant
 
 
 class Controller:
-    def __init__(self, problem, cubeMatrix):
+    def __init__(self, problem):
         self._problem = problem
         self._numEpochs = 0
         self._numAnts = 0
@@ -10,7 +10,6 @@ class Controller:
         self._beta = 0.0
         self._rho = 0.0 # the evaporation rate
         self._q0 = 0.0
-        self._cubeMatrix = cubeMatrix
         self.loadParameters()
 
     def getEpoch(self):
