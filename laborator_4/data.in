@@ -1,0 +1,17 @@
+temperature,capacity,power
+cold,-10000,30,50
+cool,30,50,60
+moderate,60,70,80
+hot,70,90,110
+very hot,90,110,10000
+small,-10000,0,5
+medium,3,5,7
+high,5,7,10000
+small,-10000,0,10
+medium,5,10,15
+high,10,15,10000
+small,medium,high
+small,medium,high
+small,small,small
+small,small,small
+small,small,small
