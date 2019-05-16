@@ -9,7 +9,7 @@ class FuzzySet:
 
     def fuzzification(self, x):
         # triangular membership function
-        minimum = min((x - self._a) / (self._b - self._a), (self._c - x) / (self._c - self._b))
+        minimum = min((x - self.getLeftCorner()) / (self.getCenter() - self.getLeftCorner()), 1, (self.getRightCorner() - x) / (self.getRightCorner() - self.getCenter()))
         return max(minimum, 0)
 
     def getCenter(self):
@@ -18,7 +18,7 @@ class FuzzySet:
     def getLeftCorner(self):
         return self._a
 
-    def getRightCorder(self):
+    def getRightCorner(self):
         return self._c
 
     def getLabel(self):
