@@ -1,6 +1,6 @@
 temperature,capacity,power
 cold,-10000,30,50
-cool,30,50,60
+cool,30,50,70
 moderate,60,70,80
 hot,70,90,110
 very hot,90,110,10000

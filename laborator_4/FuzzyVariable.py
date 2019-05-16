@@ -7,10 +7,10 @@ class FuzzyVariable:
     def addSet(self, set):
         self._membershipSet.append(set)
 
-    def membershipFunction(self, x):
+    def membership(self, x):
         set = []
         for s in self._membershipSet:
-            set.append([s.getLabel(), s.fuzzification])
+            set.append([s.getLabel(), s.fuzzification(x)])
         return set
 
     def getSetLength(self):

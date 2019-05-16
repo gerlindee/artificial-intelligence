@@ -22,7 +22,9 @@ class Controller:
         print("2. Display the current capacity of the furnace;")
         print("3. Display the rules;")
         print("4. Display the inferences;")
-        print("5. Display the most efficient power mode for the furnace;")
+        print("5. Display the aggregates;")
+        print("6. Display the defuzzified value;")
+        print("7. Display the most efficient power mode for the furnace;")
 
     def readParameters(self):
         with open(self._parametersFile) as file:
@@ -77,6 +79,7 @@ class Controller:
                     inferences[label].append(min(temperatureList[temp][1], capacityList[cap][1]))
                 else:
                     inferences[label] = [min(temperatureList[temp][1], capacityList[cap][1])]
+        return inferences
 
     @staticmethod
     def aggregate(inferences):
@@ -115,15 +118,26 @@ class Controller:
             self.menu()
             command = input(">> ")
             if command == "1":
-                pass
+                print("Temperature membership for: ", self._temperatureValue)
+                print(str(self._temperature.membership(self._temperatureValue)))
             elif command == "2":
-                pass
+                print("Capacity membership for: ", self._capacityValue)
+                print(self._capacity.membership(self._capacityValue))
             elif command == "3":
-                pass
+                for rule in self._rules:
+                    print(rule)
             elif command == "4":
-                pass
+                print(self.inference())
             elif command == "5":
-                pass
+                print(self.aggregate(self.inference()))
+            elif command == "6":
+                print(self.defuzzify(self.aggregate(self.inference()), self._power))
+            elif command == "7":
+                print("Recommended power setting: ")
+                defuzzified = self.defuzzify(self.aggregate(self.inference()), self._power)
+                value, label = self.interpretResults(self._power.membership(defuzzified))
+                print("\t" + "Maximum value: ", value)
+                print("\t" + "Power setting: ", label)
             elif command == "0":
                 running = False
             else:
