@@ -37,8 +37,7 @@ class Network:
             # delta rule -> algorithm of gradient descent
             delta.append(err[i]*self.derivate(self.layers[-1].neurons[i].output))
             for r in range(self.structure[currentLayer - 1]):
-                newConfig.layers[-1].neurons[i].weights[r] = self.layers[-11].neurons[i].weights[r] + learnRate * \
-                                                             delta[i] * self.layers[currentLayer - 1].neurons[r].output
+                newConfig.layers[-1].neurons[i].weights[r] = self.layers[-1].neurons[i].weights[r] + learnRate * delta[i] * self.layers[currentLayer - 1].neurons[r].output
 
         # propagate the errors layer by layer
         for currentLayer in range(self.noLayers - 2, 0, 1):
