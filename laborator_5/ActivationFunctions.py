@@ -5,7 +5,7 @@ def identical(x):
     return x
 
 
-def derr_Identical():
+def derr_Identical(x):
     return 1
 
 
@@ -25,7 +25,7 @@ def threshold(x):
     return 0
 
 
-def derr_threshold():
+def derr_threshold(x):
     return 1
 
 

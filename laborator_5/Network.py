@@ -52,6 +52,7 @@ class Network:
         self.layers = deepcopy(newConfig.layers)
 
     def computeLoss(self, inputValues, outputValues):
+        # measures the inconsistency (difference) between predicted values and actual values
         loss = []
         out = self.feedForward(inputValues)
         loss.append(outputValues - out)
