@@ -18,3 +18,9 @@ class Population:
     def best(self, maxInd):
         self.individuals = sorted(self.individuals, key=lambda x: x.fitness)
         return self.individuals[:maxInd]
+
+    def setIndividuals(self, newPopulation):
+        self.individuals = newPopulation
+
+    def getIndividuals(self):
+        return self.individuals
